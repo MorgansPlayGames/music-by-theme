@@ -60,19 +60,20 @@
           <p class="my-4">Music has the ability to evoke powerful emotional responses such as chills and thrills in listeners. Positive emotions dominate musical experiences. Pleasurable music may lead to the release of neurotransmitters associated with reward, such as dopamine.
             Listening to music is an easy way to alter mood or relieve stress.</p>
             
-            <form action="/action_page.php">
+            <form>
               <a  class="text-uppercase d-inline-block btn-soft
             light">Choose a mood:</a>
-              <select class="text-uppercase d-inline-block btn-soft
+            <input type="text" id="searchBox">
+              <!-- <select class="text-uppercase d-inline-block btn-soft
               light" name="songMood" id="mood">
-                <option href="#" value="Energetic">Energetic</option>
-                <option href="#" value="Aggressive">Aggressive</option>
-                <option href="#" value="Euphoric">Euphoric</option>
-                <option href="#" value="Majestic">Majestic</option>
-              </select>
-              <!-- <br><br> //Possible submit button 
-              <input class="text-uppercase d-inline-block btn-soft
-              light" type="submit" value="Submit"> -->
+                <option value="Energetic">Energetic</option>
+                <option value="Aggressive">Aggressive</option>
+                <option value="Euphoric">Euphoric</option>
+                <option value="Majestic">Majestic</option>
+              </select> -->
+              <br><br>  
+              <button class="text-uppercase d-inline-block btn-soft
+              light" id = 'searchBtn'>
             </form>
 
           </div>
@@ -80,6 +81,9 @@
           <img class="img-fluid d-md-block ml-md-auto" src="https://content.thriveglobal.com/wp-content/uploads/2019/07/how-does-music-affect-the-brain.jpg" alt="brain">
         </div>
       </div>
+    </div>
+    <div id = "populateListHere">
+
     </div>
   </section>
 
@@ -98,6 +102,7 @@
         </div>
       </div>
     </div>
+    <div id='populateMe'></div>
   </section>
 
   <section class="features  light-bg py-5">
@@ -170,13 +175,15 @@
 </footer>
 
   <!-- JS to open the menu on click -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src = "script.js"></script>
   <script>
     let openMenu = document.querySelector('.menu-toggler');
     let navList = document.querySelector('.nav-list');
 
-    openMenu.addEventListener('click', function () {
-      navList.classList.toggle('active');
-    });  
+    //openMenu.addEventListener('click', function () {
+    //  navList.classList.toggle('active');
+    //});  
     </script>
 
 
