@@ -8,10 +8,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Valence</title>
   <!--Font Awesome CDN-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css">
-  <!--Bootstrap CDN-->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!--My stylesheet-->
+  <script src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -77,8 +81,7 @@
                 <option value="Majestic">Majestic</option>
               </select> -->
             <br><br>
-            <button class="text-uppercase d-inline-block btn-soft
-              light" id='searchBtn'>
+            <button class="text-uppercase d-inline-block btn-soft light" data-toggle="modal" data-target="#exampleModal" id='searchBtn'>Search Mood</button>
           </form>
 
         </div>
@@ -88,9 +91,6 @@
             alt="brain">
         </div>
       </div>
-    </div>
-    <div id="populateListHere">
-
     </div>
   </section>
 
@@ -110,7 +110,6 @@
         </div>
       </div>
     </div>
-    <div id='populateMe'></div>
   </section>
 
   <section class="features  light-bg py-5">
@@ -186,7 +185,24 @@
     </div>
     </div>
   </footer>
-
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Top 50 tracks related to your search</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="populateListHere">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- JS to open the menu on click -->
   <!-- Added spotify player incase we want to use it, if not delete -->
   <script src="https://sdk.scdn.co/spotify-player.js"></script>
