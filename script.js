@@ -35,7 +35,7 @@ $(document).ready(function () {
             nameEl = $('<p>').text(numberEl + ' Song: ' + songName);
             artistEl = $('<p>').text('Artist: ' + songArtist);
             songURL = songTag[i].url;
-            songURLEl = $('<a>link</a>').attr('href', songURL);
+            songURLEl = $('<a>link</a>').attr('href', songURL).attr('target', "_blank");
             songEl.append(nameEl);
             songEl.append(artistEl);
             songEl.append(songURLEl);
