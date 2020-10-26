@@ -7,11 +7,13 @@
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Valence</title>
-  <!--Font Awesome CDN-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css">
-  <!--Bootstrap CDN-->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!--My stylesheet-->
+  <!-- Jquery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <!-- Bootstrap Jquery -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <!--Our stylesheet-->
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -21,20 +23,19 @@
       <nav class="nav">
         <a href="index.html" class="nav-brand">Valence <span>Music</span></a>
         <div class="menu-toggler">
-          <i class="fas fa-bars"></i>
-
+          <i class="fas fa-bars">?</i>
         </div>
         <ul class="nav-list list-unstyled">
           <li class="nav-item">
             <a href="index.html" class="nav-link"></a>
           </li>
-          <a href="#" class="nav-link"></a>
+          <li><a href="#" class="nav-link"></a>
           </li>
-          <a href="#" class="nav-link"></a>
+          <li><a href="#" class="nav-link"></a>
           </li>
-          <a href="#" class="nav-link"></a>
+          <li><a href="#" class="nav-link"></a>
           </li>
-          <a href="#" class="nav-link"></a>
+          <li><a href="#" class="nav-link"></a>
           </li>
         </ul>
       </nav>
@@ -70,16 +71,9 @@
             <a class="text-uppercase d-inline-block btn-soft
             light">Choose a mood:</a>
             <input type="text" id="searchBox">
-            <!-- <select class="text-uppercase d-inline-block btn-soft
-              light" name="songMood" id="mood">
-                <option value="Energetic">Energetic</option>
-                <option value="Aggressive">Aggressive</option>
-                <option value="Euphoric">Euphoric</option>
-                <option value="Majestic">Majestic</option>
-              </select> -->
             <br><br>
-            <button class="text-uppercase d-inline-block btn-soft
-              light" id='searchBtn'>
+            <!-- Search Button -->
+            <button class="text-uppercase d-inline-block btn-soft light" data-toggle="modal" data-target="#exampleModal" id='searchBtn'>Search Mood</button>
           </form>
 
         </div>
@@ -89,9 +83,6 @@
             alt="brain">
         </div>
       </div>
-    </div>
-    <div id="populateListHere">
-
     </div>
   </section>
 
@@ -114,7 +105,6 @@
         </div>
       </div>
     </div>
-    <div id='populateMe'></div>
   </section>
 
     <!--Quotes, adding character and context-->
@@ -186,30 +176,40 @@
             (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed,
             angry).</p>
         </div>
-
-
       </div>
     </div>
-    </div>
   </footer>
-
+  <!-- Modal to populate songlist into -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Top 50 tracks related to your search</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id = "populateListHere">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- JS to open the menu on click -->
   <!-- Added spotify player incase we want to use it, if not delete -->
-  <script src="https://sdk.scdn.co/spotify-player.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Commented out until we can get functionality to spotify player -->
+  <!--<script src="https://sdk.scdn.co/spotify-player.js"></script>-->
   <script src="script.js"></script>
   <script>
     let openMenu = document.querySelector('.menu-toggler');
     let navList = document.querySelector('.nav-list');
 
-    //openMenu.addEventListener('click', function () {
-    //  navList.classList.toggle('active');
-    //});  
+    openMenu.addEventListener('click', function () {
+      navList.classList.toggle('active');
+    });  
   </script>
-
-
-
-
 
 </body>
 
