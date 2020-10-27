@@ -1,9 +1,11 @@
 $(document).ready(function () {
     var searchText;
     //click search button set the searchBox as the value
-    $("#searchBtn").on('click', function (event) {
+     //prevent default prevents page from auto refreshing 
         event.preventDefault();
+        //take user input from index.html line 73
         searchText = $("#searchBox").val();
+        //method call 
         searchTag();
     });
     //get top tracks by tag
