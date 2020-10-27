@@ -11,7 +11,7 @@ $(document).ready(function () {
         var key = '4042e92bded8b7f879e7f753d9f06247';
         var searchType = 'tag.getTopTracks';
 
-        var queryURL = 'http://ws.audioscrobbler.com/2.0/?method=' + searchType + '&tag=' + searchText + '&api_key=' + key + '&format=json';
+        var queryURL = 'https://ws.audioscrobbler.com/2.0/?method=' + searchType + '&tag=' + searchText + '&api_key=' + key + '&format=json';
         $.ajax({
                 url: queryURL,
                 method: "GET"
