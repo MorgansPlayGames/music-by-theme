@@ -11,7 +11,7 @@ $(document).ready(function () {
         var key = '4042e92bded8b7f879e7f753d9f06247';
         var searchType = 'tag.getTopTracks';
 
-        var queryURL = 'http://ws.audioscrobbler.com/2.0/?method=' + searchType + '&tag=' + searchText + '&api_key=' + key + '&format=json';
+        var queryURL = 'https://ws.audioscrobbler.com/2.0/?method=' + searchType + '&tag=' + searchText + '&api_key=' + key + '&format=json';
         $.ajax({
                 url: queryURL,
                 method: "GET"
@@ -19,15 +19,15 @@ $(document).ready(function () {
             .then(function (songTag) {
                 populateList(songTag.tracks.track);
             });
-        //populate the populateMeHere div with top tracks
     }
-
+    //populate the populateMeHere div with top tracks
     function populateList(songTag) {
         console.log(songTag);
         $('#populateListHere').empty();
 
         for (var i = 0; i < songTag.length; i++) {
-            //console.log(songTag[i]);
+            //create a div for each song
+            //put in name, artist, and link to LastFM
             songEl = $("<div>");
             songName = songTag[i].name;
             songArtist = songTag[i].artist.name;
@@ -35,7 +35,7 @@ $(document).ready(function () {
             nameEl = $('<p>').text(numberEl + ' Song: ' + songName);
             artistEl = $('<p>').text('Artist: ' + songArtist);
             songURL = songTag[i].url;
-            songURLEl = $('<a>link</a>').attr('href', songURL);
+            songURLEl = $('<a>link</a>').attr('href', songURL).attr('target', '_blank' );
             songEl.append(nameEl);
             songEl.append(artistEl);
             songEl.append(songURLEl);
