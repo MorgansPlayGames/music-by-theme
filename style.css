@@ -67,15 +67,6 @@ header{
 
 a.nav-brand:hover span{
     color: #fff;
-
-}
-
-.menu-toggler{
-    color: #fff;
-    font-size: 22px;
-    cursor: pointer;
-    position: relative;
-    z-index: 2000;
 }
 
 .nav-list{
@@ -117,6 +108,8 @@ a.nav-brand:hover span{
     height: 65vh;
     background-image: var(--background-color);
     overflow: hidden;
+    padding-left: 35%;
+   
 }
 
 .main-content{
