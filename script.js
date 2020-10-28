@@ -83,5 +83,9 @@ kanyeBtn.addEventListener("click", function () {
 });
 
 function loadKanyeQuote(yes) {
-    return yes ? quoteHtml.textContent = "slow your roll, I am loading" : quoteHtml.innerHTML = '';
+    if (yes) {
+        return quoteHtml.textContent = 'slow your roll, I am loading';
+    } else {
+        return quoteHtml.innerHTML = '';
+    }
 }
