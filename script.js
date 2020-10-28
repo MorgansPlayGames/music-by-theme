@@ -50,9 +50,9 @@ const kanyeBtn = document.querySelector('#kanyeRestbtn');
 
 function appendQuote(object) {
     quoteHtml.innerHTML = ''; // 
+    //create h4 tags so it implements 
     const quote = document.createElement('h4');
     const span = document.createElement('span');
-    span.classList.add('bg-black', 'fc-white', 'padding-0250', 'lh-title');
     span.textContent = object.quote;
     quote.appendChild(span);
     return quoteHtml.appendChild(quote);
@@ -64,6 +64,7 @@ function kanyeRest() {
     return new Promise(async function (resolve, reject) {
         //try catch 
         try {
+            //use Fetch https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
             const request = await fetch('https://api.kanye.rest/');
             const response = await request.json();
             //isLoading(false);
