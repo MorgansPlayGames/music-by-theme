@@ -71,6 +71,7 @@ function kanyeRest() {
             resolve(appendQuote(response));
         } catch (error) {
             reject(appendError(error));
+            console.log(error);
         }
     });
 
