@@ -48,6 +48,7 @@ function populateList(songTag) {
     }
 }
 
+//Kanye Rest API https://kanye.rest/ ***********************************************************************
 const quoteHtml = document.querySelector('#Kanyequote');
 const kanyeBtn = document.querySelector('#kanyeRestbtn');
 
@@ -93,3 +94,5 @@ function loadKanyeQuote(yes) {
         return quoteHtml.innerHTML == '';
     }
 }
+
+//End Kanye West API/**************************************************************************************
