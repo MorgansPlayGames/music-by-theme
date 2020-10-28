@@ -8,11 +8,15 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Valence</title>
   <!-- Jquery -->
-  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <!-- Bootstrap Jquery -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+  </script>
   <!--Our stylesheet-->
   <link rel="stylesheet" href="style.css">
 </head>
@@ -22,7 +26,6 @@
     <div class="container">
       <nav class="nav">
         <a href="index.html" class="nav-brand">Valence <span>Music</span></a>
-        <div class="menu-toggler">
         </div>
       </nav>
     </div>
@@ -80,22 +83,22 @@
 
         <div class="col-md-6 text-center">
           <img class="img-fluid d-md-block mr-md-auto"
-            src="https://musicandmemory.org/wp-content/uploads/2018/05/Neuronal_activity_DARPA.jpg" alt="brain">
+            src="https://storage.googleapis.com/afs-prod/media/c7ee6099a9044f57b6502c4b2a6105d7/2763.jpeg" alt="Kanye West">
         </div>
-        
+
         <!--Search for song by lyric-->
-        
+
         <div class="col-md-6 mb-4 mb-md-0">
-          <h1 class="section-heading">Search a song by lyrics</h1>
-          <p class="my-4">Use our lovely feature and search one of your favorite songs by just typing in the lyrics</p>
+          <h1 class="section-heading">Generate a quote by Yeezus, Himself</h1>
+          <p class="my-4">The best of the West needs his word spread to the world</p>
           <a href="#" class="text-uppercase d-inline-block btn-soft
-            dark">Search by lyrics</a>
+            dark">Get Quote</a>
         </div>
       </div>
     </div>
   </section>
 
-    <!--Quotes, adding character and context-->
+  <!--Quotes, adding character and context-->
   <section class="features  light-bg py-5">
     <div class="container">
       <div class="row">
@@ -154,7 +157,17 @@
     </div>
   </section>
 
-    <!--Adding Valence definition-->
+  <!-- Kanye Rest -->
+  <div id="Kanyequote">
+    <div id="screen" class="flex-center-full h-100vh w-100 tc-center pointer padding-2 bg-lighpink">
+      <button class="text-uppercase d-inline-block btn-soft light kanyeRest" id='searchBtn'>Kanye Rest</button>
+      <p class="fs-style padding-0250 fw-bold bg-black fc-white">Kanye Rest</p>
+    </div>
+  </div>
+
+
+
+  <!--Adding Valence definition-->
   <footer class="py-5">
     <div class="container">
       <div class="row">
@@ -193,12 +206,14 @@
       </div>
     </div>
   </div>
+
+
   <!-- JS to open the menu on click -->
   <!-- Added spotify player incase we want to use it, if not delete -->
   <!-- Commented out until we can get functionality to spotify player -->
   <!--<script src="https://sdk.scdn.co/spotify-player.js"></script>-->
   <script src="script.js"></script>
-  
+
 
 </body>
 
