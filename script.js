@@ -202,10 +202,25 @@ function populateList(songTag) {
         $('#populateListHere').append(songEl);
     }
 }
+
+const quoteHtml = document.querySelector('#Kanyequote');
+const screen = document.querySelector('#screen');
+
+function appendQuote(object) {
+    quoteHtml.innerHTML = ''; // 
+    const quote = document.createElement('h1');
+    const span = document.createElement('span');
+    span.classList.add('bg-black', 'fc-white', 'padding-0250', 'lh-title');
+    span.textContent = object.quote;
+    quote.appendChild(span);
+    return quoteHtml.appendChild(quote);
+}
 //function to get quote
 function kanyeRest() {
     isLoading(true);
+    //async function https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
     return new Promise(async (resolve, reject) => {
+        //try catch 
         try {
             const request = await fetch('https://api.kanye.rest/');
             const response = await request.json();
@@ -215,7 +230,12 @@ function kanyeRest() {
             reject(appendError(error));
         }
     });
+
 }
+screen.addEventListener("click", async function () {
+return await kanyeRest();
+});
+
 
 
 
