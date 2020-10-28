@@ -50,7 +50,7 @@ const kanyeBtn = document.querySelector('#kanyeRestbtn');
 
 function appendQuote(object) {
     quoteHtml.innerHTML = ''; // 
-    const quote = document.createElement('h1');
+    const quote = document.createElement('h4');
     const span = document.createElement('span');
     span.classList.add('bg-black', 'fc-white', 'padding-0250', 'lh-title');
     span.textContent = object.quote;
@@ -80,5 +80,5 @@ kanyeBtn.addEventListener("click", function () {
 });
 
 function isLoading(yes) {
-    return yes ? quoteHtml.textContent = 'Loading...' : quoteHtml.innerHTML = '';
+    return yes ? quoteHtml.textContent = "slow your roll, I am loading" : quoteHtml.innerHTML = '';
 }
