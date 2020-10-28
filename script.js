@@ -48,8 +48,9 @@ function populateList(songTag) {
 const quoteHtml = document.querySelector('#Kanyequote');
 const kanyeBtn = document.querySelector('#kanyeRestbtn');
 
+//function to append quote to DOM
 function appendQuote(object) {
-    quoteHtml.innerHTML = ''; // 
+    quoteHtml.innerHTML = ''; //
     //create h4 tags so it implements 
     const quote = document.createElement('h4');
     const span = document.createElement('span');
@@ -59,7 +60,7 @@ function appendQuote(object) {
 }
 //function to get quote
 function kanyeRest() {
-    isLoading(true);
+    loadKanyeQuote(true);
     //async function https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
     return new Promise(async function (resolve, reject) {
         //try catch 
@@ -81,6 +82,6 @@ kanyeBtn.addEventListener("click", function () {
     kanyeRest();
 });
 
-function isLoading(yes) {
+function loadKanyeQuote(yes) {
     return yes ? quoteHtml.textContent = "slow your roll, I am loading" : quoteHtml.innerHTML = '';
 }
