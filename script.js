@@ -46,7 +46,7 @@ function populateList(songTag) {
 }
 
 const quoteHtml = document.querySelector('#Kanyequote');
-const screen = document.querySelector('#screen');
+const kanyeBtn = document.querySelector('#kanyeRestbtn');
 
 function appendQuote(object) {
     quoteHtml.innerHTML = ''; // 
@@ -61,12 +61,12 @@ function appendQuote(object) {
 function kanyeRest() {
     isLoading(true);
     //async function https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async function (resolve, reject) {
         //try catch 
         try {
             const request = await fetch('https://api.kanye.rest/');
             const response = await request.json();
-            isLoading(false);
+            //isLoading(false);
             resolve(appendQuote(response));
         } catch (error) {
             reject(appendError(error));
@@ -74,11 +74,11 @@ function kanyeRest() {
     });
 
 }
-screen.addEventListener("click", async function () {
-return await kanyeRest();
+kanyeBtn.addEventListener("click", function () {
+    console.log("Kanye clicked me");
+    kanyeRest();
 });
 
-
-
-
-});
+function isLoading(yes) {
+    return yes ? quoteHtml.textContent = 'Loading...' : quoteHtml.innerHTML = '';
+}
