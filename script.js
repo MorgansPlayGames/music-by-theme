@@ -1,4 +1,5 @@
 //jshint esversion: 6 
+//jshint esversion: 8
 
 $(document).ready(function () {
     var searchText;
@@ -79,6 +80,7 @@ function kanyeRest() {
     });
 
 }
+
 kanyeBtn.addEventListener("click", function () {
     console.log("Kanye clicked me");
     kanyeRest();
@@ -86,8 +88,8 @@ kanyeBtn.addEventListener("click", function () {
 
 function loadKanyeQuote(yes) {
     if (yes) {
-        return quoteHtml.textContent = 'slow your roll, I am loading';
+        return quoteHtml.textContent == 'slow your roll, I am loading';
     } else {
-        return quoteHtml.innerHTML = '';
+        return quoteHtml.innerHTML == '';
     }
 }
