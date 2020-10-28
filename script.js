@@ -46,7 +46,7 @@ function populateList(songTag) {
 }
 
 const quoteHtml = document.querySelector('#Kanyequote');
-const screen = document.querySelector('#screen');
+const kanyeBtn = document.querySelector('#kanyeRestbtn');
 
 function appendQuote(object) {
     quoteHtml.innerHTML = ''; // 
@@ -74,11 +74,11 @@ function kanyeRest() {
     });
 
 }
-screen.addEventListener("click", async function () {
-return await kanyeRest();
+kanyeBtn.addEventListener("click", function () {
+    console.log("Kanye clicked me");
+    kanyeRest();
 });
 
-
-
-
-});
+function isLoading(yes) {
+    return yes ? quoteHtml.textContent = 'Loading...' : quoteHtml.innerHTML = '';
+}
