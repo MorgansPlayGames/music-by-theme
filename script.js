@@ -61,7 +61,7 @@ function appendQuote(object) {
 function kanyeRest() {
     isLoading(true);
     //async function https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async function (resolve, reject) {
         //try catch 
         try {
             const request = await fetch('https://api.kanye.rest/');
