@@ -1,71 +1,45 @@
 $(document).ready(function () {
-    var searchText;
-    var searchText2;
     var searchType;
     //click search button set the searchBox as the value
-<<<<<<< HEAD
     $("#searchSongsBtn").on('click', function (event) {
         //prevent default prevents page from auto refreshing 
-           event.preventDefault();
-           //take user input from index.html line 73
-           searchType = 'tag.getTopTracks';
-           populateSearchSong();  
+        event.preventDefault();
+        //take user input from index.html line 73
+        searchType = 'tag.getTopTracks';
+        populateSearchSong();  
     });
     $("#searchArtistBtn").on('click', function (event) {
         //prevent default prevents page from auto refreshing 
-           event.preventDefault();
-           //take user input from index.html line 73
-           searchType = 'tag.getTopArtists';
-           populateSearchArtist();  
+        event.preventDefault();
+        //take user input from index.html line 73
+        searchType = 'tag.getTopArtists';
+        populateSearchArtist();  
     });
     $("#searchAlbumBtn").on('click', function (event) {
         //prevent default prevents page from auto refreshing 
         event.preventDefault();
-           //take user input from index.html line 73
+        //take user input from index.html line 73
         searchType = 'tag.getTopAlbums';
         populateSearchAlbum();  
     });
-    $("#getSongInfoBtn").on('click', function (event) {
-        //prevent default prevents page from auto refreshing 
-           event.preventDefault();
-           //take user input from index.html line 73
-           searchType = 'track.getInfo';
-           populateSongInfo();  
-       });
     $("#searchBtn").on('click', function(event){
         event.preventDefault();
         searchFM();
     });
-    //get top tracks by tag
-
+    //put in text for each of the searches in 
     function populateSearchSong(){
         emptyModel();
-        $("#modalLabel").text("Songs by Mood"); 
-        $('#inputLabel').text('Put in a Mood')
-        $('#toggleBox').hide();
-        
+        $("#modalLabel").text("Songs by Mood");         
     }
     function populateSearchArtist(){
         emptyModel();
-        $("#modalLabel").text("Artists by Mood"); 
-        $('#inputLabel').text('Put in a Mood')
-        $('#toggleBox').hide();
-        
+        $("#modalLabel").text("Artists by Mood");        
     }
     function populateSearchAlbum(){
         emptyModel();
-        $("#modalLabel").text("Albums by Mood"); 
-        $('#inputLabel').text('Put in a Mood')
-        $('#toggleBox').hide();
-        
+        $("#modalLabel").text("Albums by Mood");        
     }
-    function populateSongInfo(){
-        emptyModel();
-        $('#toggleBox').attr('style', "display:block");
-        $("#modalLabel").text("Get song info");
-        $('#inputLabel').text('Put in a song')
-        
-    }
+    
     //Empties the Model so things can be populated
     function emptyModel(){
         $('#populateListHere').empty();
@@ -73,14 +47,9 @@ $(document).ready(function () {
     
     function searchFM() {
         var key = '4042e92bded8b7f879e7f753d9f06247';
-        var queryURL;
-        var searchText = $("#searchBox").val();
-        var searchText2 = $("#searchBox2").val();
-        if(searchType==="track.getInfo"){
-            queryURL = 'https://ws.audioscrobbler.com/2.0/?method=' + searchType + '&artist=' + searchText2 + '&track='+ searchText + '&api_key=' + key + '&format=json';
-        }else{
-            queryURL = 'https://ws.audioscrobbler.com/2.0/?method=' + searchType + '&tag=' + searchText + '&api_key=' + key + '&format=json';
-        }
+        var queryURL = 'https://ws.audioscrobbler.com/2.0/?method=' + searchType + '&tag=' + searchText + '&api_key=' + key + '&format=json';;
+        var searchText = $("#searchBox").val();        
+            
         $.ajax({
                 url: queryURL,
                 method: "GET"
@@ -153,91 +122,4 @@ $(document).ready(function () {
             $('#populateListHere').append(albumEl);
         }
     }
-
-    function populateSongInfo(songTag) {
-
-    }
 });
-=======
-    //prevent default prevents page from auto refreshing 
-    event.preventDefault();
-    //take user input from index.html line 73
-    searchText = $("#searchBox").val();
-    //method call 
-    searchTag();
-});
-//get top tracks by tag
-function searchTag() {
-    var key = '4042e92bded8b7f879e7f753d9f06247';
-    var searchType = 'tag.getTopTracks';
-
-    var queryURL = 'https://ws.audioscrobbler.com/2.0/?method=' + searchType + '&tag=' + searchText + '&api_key=' + key + '&format=json';
-    $.ajax({
-            url: queryURL,
-            method: "GET"
-        })
-        .then(function (songTag) {
-            populateList(songTag.tracks.track);
-        });
-}
-//populate the populateMeHere div with top tracks
-function populateList(songTag) {
-    console.log(songTag);
-    $('#populateListHere').empty();
-
-    for (var i = 0; i < songTag.length; i++) {
-        //create a div for each song
-        //put in name, artist, and link to LastFM
-        songEl = $("<div>");
-        songName = songTag[i].name;
-        songArtist = songTag[i].artist.name;
-        numberEl = i + 1;
-        nameEl = $('<p>').text(numberEl + ' Song: ' + songName);
-        artistEl = $('<p>').text('Artist: ' + songArtist);
-        songURL = songTag[i].url;
-        songURLEl = $('<a>link</a>').attr('href', songURL).attr('target', '_blank');
-        songEl.append(nameEl);
-        songEl.append(artistEl);
-        songEl.append(songURLEl);
-        $('#populateListHere').append(songEl);
-    }
-}
-
-const quoteHtml = document.querySelector('#Kanyequote');
-const screen = document.querySelector('#screen');
-
-function appendQuote(object) {
-    quoteHtml.innerHTML = ''; // 
-    const quote = document.createElement('h1');
-    const span = document.createElement('span');
-    span.classList.add('bg-black', 'fc-white', 'padding-0250', 'lh-title');
-    span.textContent = object.quote;
-    quote.appendChild(span);
-    return quoteHtml.appendChild(quote);
-}
-//function to get quote
-function kanyeRest() {
-    isLoading(true);
-    //async function https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
-    return new Promise(async (resolve, reject) => {
-        //try catch 
-        try {
-            const request = await fetch('https://api.kanye.rest/');
-            const response = await request.json();
-            isLoading(false);
-            resolve(appendQuote(response));
-        } catch (error) {
-            reject(appendError(error));
-        }
-    });
-
-}
-screen.addEventListener("click", async function () {
-return await kanyeRest();
-});
-
-
-
-
-});
->>>>>>> main
