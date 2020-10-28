@@ -1,3 +1,5 @@
+//jshint esversion: 6 
+
 $(document).ready(function () {
     var searchText;
     //click search button set the searchBox as the value
