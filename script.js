@@ -60,6 +60,7 @@ function appendQuote(object) {
 //function to get quote
 function kanyeRest() {
     isLoading(true);
+    //async function https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
     return new Promise(async (resolve, reject) => {
         //try catch 
         try {
@@ -71,9 +72,12 @@ function kanyeRest() {
             reject(appendError(error));
         }
     });
-}
 
-screen.addEventListener('click', async () => await kanyeRest());
+}
+screen.addEventListener("click", async () => {
+return await kanyeRest();
+});
+
 
 
 
