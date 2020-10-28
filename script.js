@@ -74,7 +74,7 @@ function kanyeRest() {
     });
 
 }
-screen.addEventListener("click", async () => {
+screen.addEventListener("click", async function () {
 return await kanyeRest();
 });
 
