@@ -66,7 +66,7 @@ function kanyeRest() {
         try {
             const request = await fetch('https://api.kanye.rest/');
             const response = await request.json();
-            isLoading(false);
+            //isLoading(false);
             resolve(appendQuote(response));
         } catch (error) {
             reject(appendError(error));
