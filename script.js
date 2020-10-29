@@ -1,3 +1,6 @@
+//jshint esversion: 6 
+//jshint esversion: 8
+
 $(document).ready(function () {
     var searchType;
     //click search button set the searchBox as the value
@@ -114,41 +117,53 @@ $(document).ready(function () {
         }
     }
 
+//Kanye Rest API https://kanye.rest/ ***********************************************************************
 const quoteHtml = document.querySelector('#Kanyequote');
 const kanyeBtn = document.querySelector('#kanyeRestbtn');
 
+//function to append quote to DOM
 function appendQuote(object) {
-    quoteHtml.innerHTML = ''; // 
-    const quote = document.createElement('h1');
+    quoteHtml.innerHTML = ''; //
+    //create h4 tags so it implements 
+    const quote = document.createElement('h4');
     const span = document.createElement('span');
-    span.classList.add('bg-black', 'fc-white', 'padding-0250', 'lh-title');
     span.textContent = object.quote;
     quote.appendChild(span);
     return quoteHtml.appendChild(quote);
 }
 //function to get quote
 function kanyeRest() {
-    isLoading(true);
+    loadKanyeQuote(true);
     //async function https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
     return new Promise(async function (resolve, reject) {
         //try catch 
         try {
+            //use Fetch https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
             const request = await fetch('https://api.kanye.rest/');
             const response = await request.json();
             //isLoading(false);
             resolve(appendQuote(response));
         } catch (error) {
             reject(appendError(error));
+            console.log(error);
         }
     });
 
 }
+
 kanyeBtn.addEventListener("click", function () {
     console.log("Kanye clicked me");
     kanyeRest();
 });
 
-function isLoading(yes) {
-    return yes ? quoteHtml.textContent = 'Loading...' : quoteHtml.innerHTML = '';
+
+function loadKanyeQuote(yes) {
+    if (yes) {
+        return quoteHtml.textContent == 'slow your roll, I am loading';
+    } else {
+        return quoteHtml.innerHTML == '';
+    }
 }
-});
+
+//End Kanye West API/**************************************************************************************
+
