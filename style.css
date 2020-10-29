@@ -220,4 +220,6 @@ footer h5 {
 
 #kanyeRestbtn {
     /* TODO Need to center button */
+    padding-left: 50%;
+    padding-right: 50%;
 }

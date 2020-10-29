@@ -10,6 +10,7 @@ $(document).ready(function () {
         searchType = 'tag.getTopTracks';
         populateSearchSong();  
         populateLastSearch();
+
     });
     $("#searchArtistBtn").on('click', function (event) {
         event.preventDefault();
@@ -23,27 +24,30 @@ $(document).ready(function () {
         populateSearchAlbum();  
         populateLastSearch();
     });
-    $("#searchBtn").on('click', function(event){
+    $("#searchBtn").on('click', function (event) {
         event.preventDefault();
         emptyModel();
         searchFM();
     });
+
     //put in text depending on search type.
     function populateSearchSong(){
         emptyModel();
-        $("#modalLabel").text("Songs by Mood");         
+        $("#modalLabel").text("Songs by Mood");
     }
-    function populateSearchArtist(){
+
+    function populateSearchArtist() {
         emptyModel();
-        $("#modalLabel").text("Artists by Mood");        
+        $("#modalLabel").text("Artists by Mood");
     }
-    function populateSearchAlbum(){
+
+    function populateSearchAlbum() {
         emptyModel();
-        $("#modalLabel").text("Albums by Mood");        
+        $("#modalLabel").text("Albums by Mood");
     }
-    
+
     //Empties the Model so things can be populated
-    function emptyModel(){
+    function emptyModel() {
         $('#populateListHere').empty();
     }
     //get the last search and populate on model open
@@ -63,19 +67,19 @@ $(document).ready(function () {
         
         //Save the last searched
         localStorage.setItem('lastSearched', searchText);
-            
+
         $.ajax({
                 url: queryURL,
                 method: "GET"
             })
             .then(function (songInfo) {
-                if(searchType === 'tag.getTopTracks'){
+                if (searchType === 'tag.getTopTracks') {
                     populateSongList(songInfo.tracks.track)
                 }
-                if(searchType === 'tag.getTopArtists'){
+                if (searchType === 'tag.getTopArtists') {
                     populateArtistList(songInfo.topartists.artist);
                 }
-                if(searchType === 'tag.getTopAlbums'){
+                if (searchType === 'tag.getTopAlbums') {
                     populateAlbumList(songInfo.albums.album);
                 }
             });
@@ -93,7 +97,7 @@ $(document).ready(function () {
             var nameEl = $('<p>').text(numberEl + ' Song: ' + songName);
             var artistEl = $('<p>').text('Artist: ' + songArtist);
             var songURL = songTag[i].url;
-            var songURLEl = $('<a>link</a>').attr('href', songURL).attr('target', '_blank' );
+            var songURLEl = $('<a>link</a>').attr('href', songURL).attr('target', '_blank');
             songEl.append(nameEl);
             songEl.append(artistEl);
             songEl.append(songURLEl);
@@ -109,7 +113,7 @@ $(document).ready(function () {
             var numberEl = i + 1;
             var artistNameEl = $('<p>').text(numberEl + ' Artist: ' + artistName);
             var artistURL = songTag[i].url;
-            var artistURLEl = $('<a>link</a>').attr('href', artistURL).attr('target', '_blank' );
+            var artistURLEl = $('<a>link</a>').attr('href', artistURL).attr('target', '_blank');
             artistEl.append(artistNameEl);
             artistEl.append(artistURLEl);
             $('#populateListHere').append(artistEl);
@@ -125,7 +129,7 @@ $(document).ready(function () {
             var albumNameEl = $('<p>').text(numberEl + ' Album: ' + albumName);
             var artistNameEl = $('<p>').text('Artist: ' + artistName);
             var albumURL = songTag[i].url;
-            var albumURLEl = $('<a>link</a>').attr('href', albumURL).attr('target', '_blank' );
+            var albumURLEl = $('<a>link</a>').attr('href', albumURL).attr('target', '_blank');
             albumEl.append(albumNameEl);
             albumEl.append(artistNameEl);
             albumEl.append(albumURLEl);
@@ -133,53 +137,56 @@ $(document).ready(function () {
         }
     }
 
-//Kanye Rest API https://kanye.rest/ ***********************************************************************
-const quoteHtml = document.querySelector('#Kanyequote');
-const kanyeBtn = document.querySelector('#kanyeRestbtn');
+    //Kanye Rest API https://kanye.rest/ ***********************************************************************
+    const quoteHtml = document.querySelector('#Kanyequote');
+    const kanyeBtn = document.querySelector('#kanyeRestbtn');
 
-//function to append quote to DOM
-function appendQuote(object) {
-    quoteHtml.innerHTML = ''; //
-    //create h4 tags so it implements 
-    const quote = document.createElement('h4');
-    const span = document.createElement('span');
-    span.textContent = object.quote;
-    quote.appendChild(span);
-    return quoteHtml.appendChild(quote);
-}
-//function to get quote
-function kanyeRest() {
-    loadKanyeQuote(true);
-    //async function https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
-    return new Promise(async function (resolve, reject) {
-        //try catch 
-        try {
-            //use Fetch https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-            const request = await fetch('https://api.kanye.rest/');
-            const response = await request.json();
-            //isLoading(false);
-            resolve(appendQuote(response));
-        } catch (error) {
-            reject(appendError(error));
-            console.log(error);
-        }
+    //function to append quote to DOM
+    function appendQuote(object) {
+        quoteHtml.innerHTML = ''; //
+        //create h4 tags so it implements 
+        const quote = document.createElement('h4');
+        const span = document.createElement('span');
+        span.textContent = object.quote;
+        quote.appendChild(span);
+        return quoteHtml.appendChild(quote);
+    }
+    //function to get quote
+    function kanyeRest() {
+        loadKanyeQuote(true);
+        //async function https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
+        return new Promise(async function (resolve, reject) {
+            //try catch 
+            try {
+                //use Fetch https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+                const request = await fetch('https://api.kanye.rest/');
+                const response = await request.json();
+                //if successful append to response
+                resolve(appendQuote(response));
+                console.log(response);
+            } catch (error) {
+                //incase there is an error append the output
+                reject(appendError(error));
+                console.log(error);
+            }
+        });
+    }
+
+    kanyeBtn.addEventListener("click", function () {
+        console.log("Kanye clicked me");
+        kanyeRest();
     });
 
-}
 
-kanyeBtn.addEventListener("click", function () {
-    console.log("Kanye clicked me");
-    kanyeRest();
-});
+    function loadKanyeQuote(yes) {
+        if (yes) {
+            return quoteHtml.textContent == 'slow your roll, I am loading';
+            //console.log(quoteHtml.textContent);
+        } else {
+            console.error("Invalid Argument");
+            return quoteHtml.innerHTML == '';
 
-
-function loadKanyeQuote(yes) {
-    if (yes) {
-        return quoteHtml.textContent == 'slow your roll, I am loading';
-    } else {
-        return quoteHtml.innerHTML == '';
+        }
     }
-}
-
-//End Kanye West API/**************************************************************************************
 });
+
