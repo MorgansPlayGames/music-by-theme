@@ -9,22 +9,26 @@ $(document).ready(function () {
         event.preventDefault();
         searchType = 'tag.getTopTracks';
         populateSearchSong();  
+        populateLastSearch();
     });
     $("#searchArtistBtn").on('click', function (event) {
         event.preventDefault();
         searchType = 'tag.getTopArtists';
         populateSearchArtist();  
+        populateLastSearch();
     });
     $("#searchAlbumBtn").on('click', function (event) {
         event.preventDefault();
         searchType = 'tag.getTopAlbums';
         populateSearchAlbum();  
+        populateLastSearch();
     });
     $("#searchBtn").on('click', function(event){
         event.preventDefault();
+        emptyModel();
         searchFM();
     });
-    //put in text depending on search wanted 
+    //put in text depending on search type.
     function populateSearchSong(){
         emptyModel();
         $("#modalLabel").text("Songs by Mood");         
@@ -42,11 +46,23 @@ $(document).ready(function () {
     function emptyModel(){
         $('#populateListHere').empty();
     }
+    //get the last search and populate on model open
+    function populateLastSearch(){
+        var lastSearched = localStorage.getItem('lastSearched');
+        if (lastSearched === null){
+            return;
+        }
+        var lastSearchEl = $("<p>").attr('data-name', lastSearched).text('Last Searched Mood: ' + lastSearched).attr('class', 'text-center');
+        $('#populateListHere').append(lastSearchEl);
+    }
     //ajax call
     function searchFM() {
         var key = '4042e92bded8b7f879e7f753d9f06247';
+        var searchText = $("#searchBox").val();
         var queryURL = 'https://ws.audioscrobbler.com/2.0/?method=' + searchType + '&tag=' + searchText + '&api_key=' + key + '&format=json';;
-        var searchText = $("#searchBox").val();        
+        
+        //Save the last searched
+        localStorage.setItem('lastSearched', searchText);
             
         $.ajax({
                 url: queryURL,
@@ -66,7 +82,6 @@ $(document).ready(function () {
     }
     //populate the populateMeHere div with top tracks
     function populateSongList(songTag) {
-        emptyModel();
 
         for (var i = 0; i < songTag.length; i++) {
             //create a div for each song
@@ -87,6 +102,7 @@ $(document).ready(function () {
     }
 
     function populateArtistList(songTag) {
+    
         for (var i = 0; i < songTag.length; i++) {
             var artistEl = $("<div>");
             var artistName = songTag[i].name;
@@ -166,4 +182,4 @@ function loadKanyeQuote(yes) {
 }
 
 //End Kanye West API/**************************************************************************************
-
+});
