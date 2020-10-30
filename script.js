@@ -47,7 +47,7 @@ $(document).ready(function () {
     //ajax call
     function searchFM() {
         var key = '4042e92bded8b7f879e7f753d9f06247';
-        var queryURL = 'https://ws.audioscrobbler.com/2.0/?method=' + searchType + '&tag=' + searchText + '&api_key=' + key + '&format=json';;
+        var queryURL = 'https://ws.audioscrobbler.com/2.0/?method=' + searchType + '&tag=' + searchText + '&api_key=' + key + '&format=json';
         var searchText = $("#searchBox").val();
 
         $.ajax({
@@ -56,7 +56,7 @@ $(document).ready(function () {
             })
             .then(function (songInfo) {
                 if (searchType === 'tag.getTopTracks') {
-                    populateSongList(songInfo.tracks.track)
+                    populateSongList(songInfo.tracks.track);
                 }
                 if (searchType === 'tag.getTopArtists') {
                     populateArtistList(songInfo.topartists.artist);
