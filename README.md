@@ -5,21 +5,20 @@ Describes the musical positiveness conveyed by a track. Tracks with high valence
 
 **Rational**
 
-    We wanted a resource to find new music to match our current mood. 
+    We wanted a resource to find new music, artists, and albums to match our current mood. We also wanted life advice from a genius, Kanye West.
     
  
  **How to Use**
  
-    Enter a word into the search box, example: happy, click on search mood to have a list populate. You  also have a link that opens last.fm where you can listen to the song and find out more about the artist. 
+    Enter a word into the search box, example: happy, click on search mood to have a list populate. You also have a link that opens last.fm where you can listen to the song and find out more about the artist. 
     
     If you need a laugh to brighten your pandemic year, click to get a quote from Kanye West. 
 
 
-**Third party assests**     
+**Technologies used**     
 
-    Font Awesome
+    HTML5, CSS, jQuery, Bootstrap
     
-    Bootstrap
 
 **API Resources**
 
